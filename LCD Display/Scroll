@@ -1,0 +1,26 @@
+#include <Wire.h>
+#include "rgb_lcd.h"
+
+rgb_lcd lcd;
+
+const int colorR = 0;
+const int colorG = 0;
+const int colorB = 10; //dark blue for comfort of eyes
+int scroll = 16; //scroll value
+
+void setup() 
+{
+    lcd.begin(16, 2);
+    lcd.setRGB(colorR, colorG, colorB);
+}
+
+void loop() 
+{
+  while (scroll >= 0){
+    lcd.setCursor(scroll, 1); //start at far right of screen
+    
+    lcd.print("hello, world!");
+    delay(200); //delay to move it slower
+    scroll--; //move the place of the phrase to left by one
+  }
+}
