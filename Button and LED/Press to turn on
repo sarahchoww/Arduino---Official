@@ -1,0 +1,34 @@
+const int TouchPin = 3;
+const int ledPin = 6;
+int sensorValue; //variable to read TouchPin
+bool light = false;
+
+void setup() {
+    pinMode(TouchPin, INPUT);
+    pinMode(ledPin,OUTPUT);
+}
+
+void loop() {
+    sensorValue = digitalRead(TouchPin);
+    if (sensorValue == 1)
+    {
+      if (light == true) //if light is on
+      {
+        digitalWrite (ledPin, LOW); //turn LED off
+        light = false; //light is now off
+      }
+      else if (light == false) //if light is off
+      {
+        digitalWrite(ledPin, HIGH); //turn LED on
+        light = true; //light is now on
+      }
+
+      // Since every button press produces x amount of 1s, this if statement is used multiple times. This while loop traps the code so it will only run through
+      //the if statement once
+      
+      while (sensorValue == 1) //keep in while loop until all of the 1s from button press goes away
+      {
+        sensorValue = digitalRead(TouchPin); //to keep checking if all of the 1s have passed
+      }
+    }
+}
