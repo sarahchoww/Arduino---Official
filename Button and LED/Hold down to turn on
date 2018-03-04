@@ -1,0 +1,22 @@
+const int TouchPin = 3;
+const int ledPin = 6;
+int sensorValue; //variable to read TouchPin
+
+void setup() {
+    pinMode(TouchPin, INPUT);
+    pinMode(ledPin,OUTPUT);
+}
+
+void loop() {
+    sensorValue = digitalRead(TouchPin);
+    
+    if (sensorValue == 1)
+    {
+      digitalWrite(ledPin, HIGH); //turn light on if button is held down
+    }
+    else if (sensorValue == 0)
+    {
+      digitalWrite(ledPin, LOW); //turn light off if button is not pressed
+    }
+    
+}
