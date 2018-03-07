@@ -4,6 +4,7 @@ int sensorValue; //variable to read TouchPin
 bool light = false;
 
 void setup() {
+  Serial.begin(9600);
     pinMode(TouchPin, INPUT);
     pinMode(ledPin,OUTPUT);
 }
@@ -25,10 +26,10 @@ void loop() {
 
       // Since every button press produces x amount of 1s, this if statement is used multiple times. This while loop traps the code so it will only run through
       //the if statement once
-      
+      Serial.println(sensorValue);
       while (sensorValue == 1) //keep in while loop until all of the 1s from button press goes away
       {
-        sensorValue = digitalRead(TouchPin); //to keep checking if all of the 1s have passed
+        sensorValue = digitalRead(TouchPin); //to ensure that all of the 1s have passed after each click
       }
     }
 }
